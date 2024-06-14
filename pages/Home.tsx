@@ -22,6 +22,7 @@ import { Skeleton } from "~/components/ui/skeleton";
 import { Nip47Transaction } from "@getalby/sdk/dist/NWCClient";
 import { TRANSACTIONS_PAGE_SIZE } from "~/lib/constants";
 import { useGetFiatAmount } from "~/hooks/useGetFiatAmount";
+import { useColorScheme } from "~/lib/useColorScheme";
 
 dayjs.extend(relativeTime);
 
@@ -38,6 +39,7 @@ export function Home() {
   const [refreshingTransactions, setRefreshingTransactions] =
     React.useState(false);
   const getFiatAmount = useGetFiatAmount();
+  const { isDarkColorScheme } = useColorScheme();
 
   React.useEffect(() => {
     if (
@@ -87,7 +89,7 @@ export function Home() {
           headerRight: () => (
             <Link href="/settings">
               <View className="flex justify-center items-center">
-                <Settings2 className="text-primary" />
+                <Settings2 className="text-primary-foreground" />
               </View>
             </Link>
           ),
@@ -96,7 +98,7 @@ export function Home() {
       <View className="w-full pt-12 flex flex-row justify-center items-center gap-2">
         <Text className="text-4xl text-muted-foreground">₿</Text>
         {balance ? (
-          <Text className="text-4xl font-bold">
+          <Text className="text-4xl font-bold text-primary-foreground">
             {new Intl.NumberFormat().format(Math.floor(balance.balance / 1000))}{" "}
             sats
           </Text>
@@ -191,12 +193,12 @@ export function Home() {
                     )}
                   </View>
                   <View className="flex flex-col flex-1">
-                    <Text numberOfLines={1}>
+                    <Text numberOfLines={1} className="text-primary-foreground">
                       {transaction.description
                         ? transaction.description
                         : transaction.type === "incoming"
-                        ? "Received"
-                        : "Sent"}
+                          ? "Received"
+                          : "Sent"}
                     </Text>
                     <Text className="text-muted-foreground text-sm">
                       {dayjs.unix(transaction.settled_at).fromNow()}

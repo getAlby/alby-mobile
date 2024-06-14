@@ -31,7 +31,7 @@ export function Transaction() {
           width={100}
           height={100}
         />
-        <Text className="text-3xl font-bold">
+        <Text className="text-3xl font-bold text-primary-foreground">
           {transaction.type === "incoming" ? "Received" : "Sent"}
         </Text>
         <View className="flex flex-col items-center justify-center gap-2">
@@ -79,7 +79,7 @@ function TransactionDetailRow(props: { title: string; content: string }) {
   return (
     <View className="flex flex-row gap-3">
       <Text className="w-32 text-muted-foreground">{props.title}</Text>
-      <Text className="flex-1">{props.content}</Text>
+      <Text className="flex-1 text-primary-foreground">{props.content}</Text>
     </View>
   );
 }
