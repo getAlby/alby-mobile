@@ -125,7 +125,7 @@ export function Home() {
         </View>
         <View>
           <View className="flex flex-row gap-6 p-6 pt-2">
-            <MainButton title="Receive" href="/receive" Icon={LargeArrowDown} />
+            <MainButton title="Receive" href="/onboarding" Icon={LargeArrowDown} />
             <MainButton title="Send" href="/send" Icon={LargeArrowUp} />
           </View>
         </View>
