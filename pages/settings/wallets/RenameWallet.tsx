@@ -29,7 +29,7 @@ export function RenameWallet() {
           <Text className="text-muted-foreground text-center">Wallet Name</Text>
           <Input
             autoFocus
-            className="w-full text-center border-transparent native:text-2xl"
+            className="w-full text-center border-transparent bg-transparent native:text-2xl"
             placeholder={DEFAULT_WALLET_NAME}
             value={walletName}
             onChangeText={setWalletName}

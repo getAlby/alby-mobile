@@ -26,7 +26,7 @@ const walletKeyPrefix = "wallet";
 const addressBookEntryKeyPrefix = "addressBookEntry";
 const selectedWalletIdKey = "selectedWalletId";
 const fiatCurrencyKey = "fiatCurrency";
-const hasOnboardedKey = "hasOnboarded";
+export const hasOnboardedKey = "hasOnboarded";
 
 type Wallet = {
   name?: string;

@@ -21,6 +21,7 @@ import { toastConfig } from "~/components/ToastConfig";
 import * as Font from "expo-font";
 import { useInfo } from "~/hooks/useInfo";
 import { secureStorage } from "~/lib/secureStorage";
+import { hasOnboardedKey } from "~/lib/state/appStore";
 
 const LIGHT_THEME: Theme = {
   dark: false,
@@ -46,7 +47,6 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const { isDarkColorScheme } = useColorScheme();
   const [fontsLoaded, setFontsLoaded] = React.useState(false);
-  const [showOnboarding, setShowOnboarding] = React.useState(false);
   useConnectionChecker();
 
   const rootNavigationState = useRootNavigationState();
@@ -54,7 +54,7 @@ export default function RootLayout() {
 
   React.useEffect(() => {
     const checkOnboardingStatus = async () => {
-      const hasOnboarded = await secureStorage.getItem("hasOnboarded");
+      const hasOnboarded = await secureStorage.getItem(hasOnboardedKey);
       if (!hasOnboarded && hasNavigationState) {
         router.replace("/onboarding");
       }

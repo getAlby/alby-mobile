@@ -32,7 +32,7 @@ export function LightningAddress() {
               autoComplete="email"
               inputMode="email"
               autoFocus
-              className="w-full text-center border-transparent native:text-2xl"
+              className="w-full text-center border-transparent bg-transparent native:text-2xl font-semibold2"
               placeholder="hello@getalby.com"
               value={lightningAddress}
               onChangeText={setLightningAddress}

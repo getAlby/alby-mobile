@@ -27,7 +27,7 @@ export function NewWallet() {
           </Label>
           <Input
             autoFocus
-            className="w-full border-transparent native:text-2xl text-center"
+            className="w-full border-transparent bg-transparent native:text-2xl text-center"
             value={name}
             onChangeText={setName}
             aria-labelledbyledBy="name"

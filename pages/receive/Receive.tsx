@@ -286,7 +286,7 @@ export function Receive() {
                   Description (optional)
                 </Text>
                 <Input
-                  className="w-full text-center border-transparent native:text-2xl font-semibold2"
+                  className="w-full text-center border-transparent bg-transparent native:text-2xl font-semibold2"
                   placeholder="No description"
                   value={comment}
                   onChangeText={setComment}

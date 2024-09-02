@@ -62,7 +62,7 @@ export function LNURLPay() {
                 Comment
               </Text>
               <Input
-                className="w-full border-transparent text-center native:text-2xl font-semibold2 text-foreground"
+                className="w-full border-transparent bg-transparent text-center native:text-2xl font-semibold2"
                 placeholder="Enter an optional comment"
                 value={comment}
                 onChangeText={setComment}

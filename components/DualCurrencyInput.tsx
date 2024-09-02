@@ -1,11 +1,10 @@
 import { Pressable, StyleSheet, View } from "react-native";
 import { useGetFiatAmount, useGetSatsAmount } from "~/hooks/useGetFiatAmount";
 import { Input } from "./ui/input";
-import { Label } from "./ui/label";
 import { Text } from "./ui/text";
 import React from "react";
 import { useAppStore } from "~/lib/state/appStore";
-import { ArrowLeftRight, RefreshCw } from "./Icons";
+import { RefreshCw } from "./Icons";
 import { CURSOR_COLOR, DEFAULT_CURRENCY } from "~/lib/constants";
 
 type DualCurrencyInputProps = {
@@ -49,7 +48,7 @@ export function DualCurrencyInput({
   return (
     <View className="w-full flex flex-col items-center justify-center gap-5">
       <Input
-        className="w-full border-transparent text-center mt-3"
+        className="w-full border-transparent bg-transparent text-center mt-3"
         placeholder="0"
         keyboardType="number-pad"
         value={inputMode === "sats" ? amount : fiatAmount}

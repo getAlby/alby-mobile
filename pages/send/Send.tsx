@@ -166,7 +166,7 @@ export function Send() {
                     LNURL.
                   </Text>
                   <Input
-                    className="w-full text-center mt-6 border-transparent !text-4xl font-semibold2 text-muted-foreground"
+                    className="w-full text-center mt-6 border-transparent bg-transparent !text-4xl font-semibold2 "
                     placeholder="hello@getalby.com"
                     value={keyboardText}
                     onChangeText={setKeyboardText}
