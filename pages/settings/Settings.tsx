@@ -66,7 +66,7 @@ export function Settings() {
                 router.replace("/onboarding");
               }}
             >
-              <Egg className="text-primary-foreground" />
+              <Egg className="text-foreground" />
               <Text className="font-medium2 text-xl">Open Onboarding</Text>
             </Pressable>
             <Pressable
