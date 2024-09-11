@@ -22,6 +22,11 @@ import * as Font from "expo-font";
 import { useInfo } from "~/hooks/useInfo";
 import { secureStorage } from "~/lib/secureStorage";
 import { hasOnboardedKey } from "~/lib/state/appStore";
+import * as Sentry from "@sentry/react-native";
+
+Sentry.init({
+  // Uses SENTRY_DSN from ENV
+});
 
 const LIGHT_THEME: Theme = {
   dark: false,
