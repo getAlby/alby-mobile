@@ -96,20 +96,20 @@ export function ConfirmPayment() {
         )}
         {
           /* only show "To" for lightning addresses */ originalText !==
-          invoice &&
-          originalText
-            .toLowerCase()
-            .replace("lightning:", "")
-            .includes("@") && (
-            <View className="flex flex-col gap-2">
-              <Text className="text-muted-foreground text-center font-semibold2">
-                To
-              </Text>
-              <Text className="text-center text-foreground text-2xl font-medium2">
-                {originalText.toLowerCase().replace("lightning:", "")}
-              </Text>
-            </View>
-          )
+            invoice &&
+            originalText
+              .toLowerCase()
+              .replace("lightning:", "")
+              .includes("@") && (
+              <View className="flex flex-col gap-2">
+                <Text className="text-muted-foreground text-center font-semibold2">
+                  To
+                </Text>
+                <Text className="text-center text-foreground text-2xl font-medium2">
+                  {originalText.toLowerCase().replace("lightning:", "")}
+                </Text>
+              </View>
+            )
         }
       </View>
       <View className="p-6">

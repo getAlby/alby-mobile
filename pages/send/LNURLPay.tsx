@@ -65,7 +65,7 @@ export function LNURLPay() {
               readOnly={isAmountReadOnly}
               autoFocus={!isAmountReadOnly}
             />
-            {lnurlDetails.commentAllowed &&
+            {lnurlDetails.commentAllowed && (
               <View className="w-full">
                 <Text className="text-muted-foreground text-center font-semibold2">
                   Comment
@@ -79,7 +79,7 @@ export function LNURLPay() {
                   maxLength={lnurlDetails.commentAllowed}
                 />
               </View>
-            }
+            )}
             <View>
               <Text className="text-muted-foreground text-center font-semibold2">
                 To

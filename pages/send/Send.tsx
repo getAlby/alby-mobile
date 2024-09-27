@@ -84,10 +84,16 @@ export function Send() {
         }
 
         // Handle fixed amount LNURLs
-        if (lnurlDetails.minSendable === lnurlDetails.maxSendable && !lnurlDetails.commentAllowed) {
+        if (
+          lnurlDetails.minSendable === lnurlDetails.maxSendable &&
+          !lnurlDetails.commentAllowed
+        ) {
           try {
             const callback = new URL(lnurlDetails.callback);
-            callback.searchParams.append("amount", (lnurlDetails.minSendable).toString());
+            callback.searchParams.append(
+              "amount",
+              lnurlDetails.minSendable.toString(),
+            );
             const lnurlPayInfo = await lnurl.getPayRequest(callback.toString());
             router.push({
               pathname: "/send/confirm",
@@ -183,7 +189,7 @@ export function Send() {
                     inputMode="email"
                     autoFocus
                     returnKeyType="done"
-                  // aria-errormessage="inputError"
+                    // aria-errormessage="inputError"
                   />
                 </View>
                 <Button onPress={submitKeyboardText} size="lg">

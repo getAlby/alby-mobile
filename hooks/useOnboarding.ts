@@ -4,15 +4,15 @@ import { useEffect } from "react";
 import { secureStorage } from "~/lib/secureStorage";
 
 export function useOnboarding() {
-    const [onboarded, setOnboarded] = React.useState(false);
-    useEffect(() => {
-        async function checkOnboardingStatus() {
-            const hasOnboarded = await secureStorage.getItem(hasOnboardedKey);
-            setOnboarded(!!hasOnboarded);
-        };
+  const [onboarded, setOnboarded] = React.useState(false);
+  useEffect(() => {
+    async function checkOnboardingStatus() {
+      const hasOnboarded = await secureStorage.getItem(hasOnboardedKey);
+      setOnboarded(!!hasOnboarded);
+    }
 
-        checkOnboardingStatus();
-    });  
-    
-    return onboarded;
+    checkOnboardingStatus();
+  });
+
+  return onboarded;
 }

@@ -14,14 +14,12 @@ export function RenameWallet() {
   const selectedWalletId = useAppStore((store) => store.selectedWalletId);
   const wallets = useAppStore((store) => store.wallets);
   const [walletName, setWalletName] = React.useState(
-    wallets[selectedWalletId].name || ""
+    wallets[selectedWalletId].name || "",
   );
   return (
     <DismissableKeyboardView>
       <View className="flex-1 flex flex-col p-6 gap-3">
-        <Screen
-          title="Wallet Name"
-        />
+        <Screen title="Wallet Name" />
         <View className="flex-1 flex flex-col items-center justify-center">
           <Text className="text-muted-foreground text-center">Wallet Name</Text>
           <Input
@@ -31,7 +29,7 @@ export function RenameWallet() {
             value={walletName}
             onChangeText={setWalletName}
             returnKeyType="done"
-          // aria-errormessage="inputError"
+            // aria-errormessage="inputError"
           />
         </View>
         <Button
@@ -42,7 +40,7 @@ export function RenameWallet() {
             });
             Toast.show({
               type: "success",
-              text1: "Wallet name updated"
+              text1: "Wallet name updated",
             });
             router.back();
           }}

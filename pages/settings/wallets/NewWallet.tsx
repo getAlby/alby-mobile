@@ -15,9 +15,7 @@ export function NewWallet() {
   return (
     <DismissableKeyboardView>
       <View className="flex-1 p-6">
-        <Screen
-          title="Connect Wallet"
-        />
+        <Screen title="Connect Wallet" />
         <View className="flex-1 flex flex-col gap-3 items-center justify-center">
           <Label nativeID="name" className="text-muted-foreground text-center">
             Wallet name
@@ -30,7 +28,7 @@ export function NewWallet() {
             aria-labelledbyledBy="name"
             placeholder="Enter a name for your wallet"
             returnKeyType="done"
-          // aria-errormessage="inputError"
+            // aria-errormessage="inputError"
           />
         </View>
         <Button

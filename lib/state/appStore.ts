@@ -139,7 +139,8 @@ export const useAppStore = create<AppState>()((set, get) => {
     secureStorage.getItem(selectedWalletIdKey) || "0"
   );
 
-  const iSecurityEnabled = secureStorage.getItem(isSecurityEnabledKey) === "true";
+  const iSecurityEnabled =
+    secureStorage.getItem(isSecurityEnabledKey) === "true";
 
   const initialWallets = loadWallets();
   return {

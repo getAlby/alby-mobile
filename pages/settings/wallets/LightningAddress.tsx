@@ -20,11 +20,11 @@ export function LightningAddress() {
     <DismissableKeyboardView>
       <View className="flex-1 flex flex-col">
         <View className="flex-1 flex flex-col p-3 gap-3">
-          <Screen
-            title="Lightning Address"
-          />
+          <Screen title="Lightning Address" />
           <View className="flex-1 flex flex-col items-center justify-center">
-            <Text className="text-muted-foreground text-center">Lightning Address</Text>
+            <Text className="text-muted-foreground text-center">
+              Lightning Address
+            </Text>
             <Input
               autoComplete="email"
               inputMode="email"
@@ -34,7 +34,7 @@ export function LightningAddress() {
               value={lightningAddress}
               onChangeText={setLightningAddress}
               returnKeyType="done"
-            // aria-errormessage="inputError"
+              // aria-errormessage="inputError"
             />
           </View>
         </View>

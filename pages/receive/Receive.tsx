@@ -101,7 +101,7 @@ export function Receive() {
                 polling &&
                 pollCount > 0 &&
                 receivedTransaction.payment_hash !==
-                prevTransaction?.payment_hash
+                  prevTransaction?.payment_hash
               ) {
                 if (
                   !invoiceRef.current ||
@@ -176,10 +176,7 @@ export function Receive() {
 
   return (
     <>
-      <Screen
-        title="Receive"
-        animation="slide_from_left"
-      />
+      <Screen title="Receive" animation="slide_from_left" />
       {!enterCustomAmount && !invoice && !lightningAddress && (
         <>
           <View className="flex-1 h-full flex flex-col items-center justify-center gap-5">

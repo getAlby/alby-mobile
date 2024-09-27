@@ -69,13 +69,15 @@ export function Transactions() {
       <Screen
         title="Transactions"
         animation="slide_from_bottom"
-        right={() => (<Pressable
-          onPress={() => {
-            router.back();
-          }}
-        >
-          <X className="text-foreground" />
-        </Pressable>)}
+        right={() => (
+          <Pressable
+            onPress={() => {
+              router.back();
+            }}
+          >
+            <X className="text-foreground" />
+          </Pressable>
+        )}
       />
       {allTransactions && allTransactions.length ? (
         <FlatList
@@ -117,10 +119,7 @@ export function Transactions() {
               <View className="flex flex-row items-center gap-3 px-4 py-3">
                 <View className="w-10 h-10 bg-muted rounded-full flex flex-col items-center justify-center">
                   {transaction.type === "incoming" && (
-                    <MoveDownLeft
-                      className="text-receive"
-                      size={20}
-                    />
+                    <MoveDownLeft className="text-receive" size={20} />
                   )}
                   {transaction.type === "outgoing" && (
                     <MoveUpRight className="text-send" size={20} />
@@ -147,8 +146,7 @@ export function Transactions() {
                         : "text-foreground",
                     )}
                   >
-                    {transaction.type === "incoming" ? "+" : "-"}
-                    {" "}
+                    {transaction.type === "incoming" ? "+" : "-"}{" "}
                     {Math.floor(transaction.amount / 1000)}
                     <Text className="text-muted-foreground"> sats</Text>
                   </Text>

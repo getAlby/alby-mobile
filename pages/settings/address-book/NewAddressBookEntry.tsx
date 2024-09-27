@@ -17,9 +17,7 @@ export function NewAddressBookEntry() {
     <DismissableKeyboardView>
       <View className="flex-1 flex flex-col">
         <View className="flex-1 flex flex-col p-3 gap-3">
-          <Screen
-            title="New Address Book Entry"
-          />
+          <Screen title="New Address Book Entry" />
           <Label nativeID="name" className="self-start justify-self-start">
             Name
           </Label>
@@ -32,7 +30,7 @@ export function NewAddressBookEntry() {
             onChangeText={setName}
             aria-labelledbyledBy="name"
             returnKeyType="done"
-          // aria-errormessage="inputError"
+            // aria-errormessage="inputError"
           />
           <Label
             nativeID="lightningAddress"
@@ -48,7 +46,7 @@ export function NewAddressBookEntry() {
             onChangeText={setLightningAddress}
             aria-labelledbyledBy="lightningAddress"
             returnKeyType="done"
-          // aria-errormessage="inputError"
+            // aria-errormessage="inputError"
           />
         </View>
         <View className="p-6">

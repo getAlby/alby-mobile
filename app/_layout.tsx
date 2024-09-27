@@ -24,7 +24,7 @@ import { secureStorage } from "~/lib/secureStorage";
 import { hasOnboardedKey, useAppStore } from "~/lib/state/appStore";
 import { usePathname } from "expo-router";
 import { UserInactivityProvider } from "~/context/UserInactivity";
-import { PortalHost } from '@rn-primitives/portal';
+import { PortalHost } from "@rn-primitives/portal";
 import { isBiometricSupported } from "~/lib/isBiometricSupported";
 
 const LIGHT_THEME: Theme = {
@@ -66,7 +66,7 @@ export default function RootLayout() {
     }
 
     setCheckedOnboarding(true);
-  };
+  }
 
   async function loadFonts() {
     await Font.loadAsync({
@@ -80,7 +80,7 @@ export default function RootLayout() {
   }
 
   async function checkBiometricStatus() {
-    const isSupported = await isBiometricSupported()
+    const isSupported = await isBiometricSupported();
     if (!isSupported) {
       useAppStore.getState().setSecurityEnabled(false);
     }
@@ -94,8 +94,7 @@ export default function RootLayout() {
           loadFonts(),
           checkBiometricStatus(),
         ]);
-      }
-      finally {
+      } finally {
         SplashScreen.hideAsync();
       }
     };
@@ -124,7 +123,12 @@ export default function RootLayout() {
           <UserInactivityProvider>
             <Stack />
           </UserInactivityProvider>
-          <Toast config={toastConfig} position="bottom" bottomOffset={140} topOffset={140} />
+          <Toast
+            config={toastConfig}
+            position="bottom"
+            bottomOffset={140}
+            topOffset={140}
+          />
           <PortalHost />
         </SafeAreaView>
       </ThemeProvider>

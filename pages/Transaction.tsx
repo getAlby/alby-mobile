@@ -20,19 +20,14 @@ export function Transaction() {
 
   return (
     <View className="flex-1 flex flex-col p-6 gap-3">
-      <Screen
-        title="Transaction"
-      />
+      <Screen title="Transaction" />
       <View className="flex flex-col gap-5 justify-center items-center">
         <View
           className="my-8 bg-muted rounded-full p-8"
-          style={{ elevation: 2 }}>
+          style={{ elevation: 2 }}
+        >
           {transaction.type === "incoming" && (
-            <MoveDownLeft
-              className="text-receive"
-              width={100}
-              height={100}
-            />
+            <MoveDownLeft className="text-receive" width={100} height={100} />
           )}
           {transaction.type === "outgoing" && (
             <MoveUpRight className="text-send" width={100} height={100} />
@@ -46,12 +41,18 @@ export function Transaction() {
             <Text
               className={cn(
                 "text-4xl gap-2 font-semibold2",
-                transaction.type === "incoming" ? "text-receive" : "text-foreground"
+                transaction.type === "incoming"
+                  ? "text-receive"
+                  : "text-foreground",
               )}
             >
-              {transaction.type === "incoming" ? "+" : "-"} {Math.floor(transaction.amount / 1000)}
+              {transaction.type === "incoming" ? "+" : "-"}{" "}
+              {Math.floor(transaction.amount / 1000)}
             </Text>
-            <Text className="text-2xl font-semibold2 text-muted-foreground"> sats</Text>
+            <Text className="text-2xl font-semibold2 text-muted-foreground">
+              {" "}
+              sats
+            </Text>
           </View>
           {getFiatAmount && (
             <Text className="text-2xl font-semibold2 text-muted-foreground ">
@@ -81,7 +82,10 @@ export function Transaction() {
           <TransactionDetailRow
             title="Fee"
             content={
-              Math.floor(transaction.fees_paid / 1000).toString() + " sats (" + (transaction.fees_paid / transaction.amount * 100).toFixed(2) + "%)"
+              Math.floor(transaction.fees_paid / 1000).toString() +
+              " sats (" +
+              ((transaction.fees_paid / transaction.amount) * 100).toFixed(2) +
+              "%)"
             }
           />
         </View>
@@ -112,7 +116,9 @@ function TransactionDetailRow(props: {
           <Text className="text-foreground font-medium2">{props.content}</Text>
         </TouchableOpacity>
       ) : (
-        <Text className="flex-1 text-foreground font-medium2">{props.content}</Text>
+        <Text className="flex-1 text-foreground font-medium2">
+          {props.content}
+        </Text>
       )}
     </View>
   );

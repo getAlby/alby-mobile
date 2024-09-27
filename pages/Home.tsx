@@ -5,8 +5,9 @@ import { useAppStore } from "lib/state/appStore";
 import { WalletConnection } from "~/pages/settings/wallets/WalletConnection";
 import {
   Link,
-  router, useFocusEffect,
-  useRootNavigationState
+  router,
+  useFocusEffect,
+  useRootNavigationState,
 } from "expo-router";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -72,13 +73,13 @@ export function Home() {
     <>
       <Screen
         title=""
-        right={() =>
+        right={() => (
           <Link href="/settings" asChild>
             <TouchableOpacity>
               <Settings2 className="text-foreground" />
             </TouchableOpacity>
           </Link>
-        }
+        )}
       />
       <View className="h-full flex">
         <View className="grow flex flex-col items-center justify-center gap-4">
@@ -175,8 +176,8 @@ function MainButton({
               alignItems: "center",
               ...(pressed
                 ? {
-                  transform: "scale(0.98)",
-                }
+                    transform: "scale(0.98)",
+                  }
                 : {}),
             }}
           >

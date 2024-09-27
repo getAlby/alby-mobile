@@ -44,7 +44,8 @@ export function Security() {
                   <Text> Setup Device Security</Text>
                 </CardTitle>
                 <CardDescription>
-                  To protect your wallet, please set up a phone lock in your device settings first.
+                  To protect your wallet, please set up a phone lock in your
+                  device settings first.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -54,7 +55,7 @@ export function Security() {
               <Label
                 className={cn(
                   "text-2xl",
-                  !isSupported && "text-muted-foreground"
+                  !isSupported && "text-muted-foreground",
                 )}
                 nativeID="security"
                 disabled={isSupported}

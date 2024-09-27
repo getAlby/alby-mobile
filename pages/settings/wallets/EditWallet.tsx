@@ -19,23 +19,21 @@ export function EditWallet() {
   const wallets = useAppStore((store) => store.wallets);
   return (
     <View className="flex-1 flex flex-col p-3 gap-3">
-      <Screen
-        title="Edit Wallet"
-      />
+      <Screen title="Edit Wallet" />
       {(wallets[selectedWalletId].nwcCapabilities || []).indexOf(
         "notifications",
       ) < 0 && (
-          <Text>
-            Warning: Your wallet does not support notifications capability.
-          </Text>
-        )}
+        <Text>
+          Warning: Your wallet does not support notifications capability.
+        </Text>
+      )}
       {(wallets[selectedWalletId].nwcCapabilities || []).indexOf(
         "list_transactions",
       ) < 0 && (
-          <Text>
-            Warning: Your wallet does not support list_transactions capability.
-          </Text>
-        )}
+        <Text>
+          Warning: Your wallet does not support list_transactions capability.
+        </Text>
+      )}
       <Link href={`/settings/wallets/${selectedWalletId}/name`} asChild>
         <Pressable>
           <Card className="w-full">

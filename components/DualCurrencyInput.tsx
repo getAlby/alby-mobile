@@ -41,7 +41,7 @@ export function DualCurrencyInput({
   function toggleInputMode() {
     if (inputMode === "sats" && getFiatAmount) {
       setFiatAmount(
-        amount ? getFiatAmount(+amount, false)?.toString() || "" : ""
+        amount ? getFiatAmount(+amount, false)?.toString() || "" : "",
       );
     }
     setInputMode(inputMode === "fiat" ? "sats" : "fiat");
@@ -61,7 +61,7 @@ export function DualCurrencyInput({
         autoFocus={autoFocus}
         returnKeyType="done"
         readOnly={readOnly}
-      // aria-errormessage="inputError"
+        // aria-errormessage="inputError"
       />
       <Pressable onPress={toggleInputMode}>
         <View className="flex flex-row gap-2 items-center justify-center">

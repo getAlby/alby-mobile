@@ -16,9 +16,7 @@ export function ReceiveSuccess() {
   });
   return (
     <View className="flex-1 flex flex-col">
-      <Screen
-        title="Payment Successful"
-      />
+      <Screen title="Payment Successful" />
       <View className="flex-1 justify-center items-center gap-2">
         <View className="-mt-32">
           <Paid />
@@ -34,11 +32,11 @@ export function ReceiveSuccess() {
             sats
           </Text>
         </View>
-        {getFiatAmount &&
+        {getFiatAmount && (
           <Text className="text-muted-foreground text-2xl font-semibold2">
             {getFiatAmount(decodedInvoice.satoshi) ?? ""}
           </Text>
-        }
+        )}
         {decodedInvoice.description && (
           <Text className="mt-4">{decodedInvoice.description}</Text>
         )}
