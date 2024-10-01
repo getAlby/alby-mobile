@@ -27,7 +27,7 @@ export function Settings() {
           <TouchableOpacity className="flex flex-row items-center gap-4">
             <Wallet2 className="text-foreground" />
             <Text className="font-medium2 text-xl text-foreground">Wallets</Text>
-            <Text className="text-muted-foreground text-xl">
+            <Text className="text-muted-foreground text-xl flex-shrink" numberOfLines={1} ellipsizeMode="tail">
               ({wallet.name || DEFAULT_WALLET_NAME})
             </Text>
           </TouchableOpacity>

@@ -2,7 +2,7 @@ import { Pressable, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import * as Clipboard from "expo-clipboard";
 import { nwc } from "@getalby/sdk";
-import { ClipboardPaste, HelpCircle, X } from "~/components/Icons";
+import { ClipboardPaste, HelpCircle, Trash2 } from "~/components/Icons";
 import { useAppStore } from "lib/state/appStore";
 import { router } from "expo-router";
 import { Button } from "~/components/ui/button";
@@ -15,6 +15,7 @@ import Loading from "~/components/Loading";
 import QRCodeScanner from "~/components/QRCodeScanner";
 import Screen from "~/components/Screen";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogClose } from "~/components/ui/dialog";
+import { Tick } from "~/animations/Tick";
 import { REQUIRED_CAPABILITIES } from "~/lib/constants";
 
 export function WalletConnection() {
@@ -63,18 +64,14 @@ export function WalletConnection() {
       useAppStore.getState().setNostrWalletConnectUrl(nostrWalletConnectUrl);
       useAppStore.getState().updateCurrentWallet({
         nwcCapabilities: capabilities,
-        ...(nwcClient.lud16 ? { lightningAddress: nwcClient.lud16 } : {}),
+        ...(nwcClient.lud16 ? { lightningAddress: nwcClient.lud16, name: nwcClient.lud16 } : {}),
       });
       useAppStore.getState().setNWCClient(nwcClient);
-      if (router.canDismiss()) {
-        router.dismissAll();
-      }
-      router.replace("/");
+      router.replace("/settings/wallets/name");
       Toast.show({
         type: "success",
-        text1: "Wallet Connected",
-        text2: "Your lightning wallet is ready to use",
-        position: "top"
+        text1: "New wallet created",
+        text2: "Please configure your wallet connection",
       });
     } catch (error) {
       console.error(error);
@@ -91,13 +88,12 @@ export function WalletConnection() {
           walletIdWithConnection !== -1 ? (
             <Pressable
               onPress={() => {
-                useAppStore
-                  .getState()
-                  .setSelectedWalletId(walletIdWithConnection);
+                useAppStore.getState().removeCurrentWallet()
+                useAppStore.getState().setSelectedWalletId(walletIdWithConnection);
                 router.replace("/");
               }}
             >
-              <X className="text-foreground" />
+              <Trash2 className="text-foreground" />
             </Pressable>
           ) :
 
@@ -131,30 +127,29 @@ export function WalletConnection() {
       {
         hasConnection && (
           <View className="flex-1 p-3">
-            <View className="flex-1 h-full flex flex-col items-center justify-center gap-5">
-              {walletInfo && <Text>Wallet Connected!</Text>}
-              {!walletInfo && <Text>Loading wallet...</Text>}
-              {walletInfo ? (
-                <Text className="self-start justify-self-start">
-                  {JSON.stringify(walletInfo, null, 2)}
-                </Text>
-              ) : (
-                <Loading />
-              )}
+            <View className="flex-1 h-full flex flex-col items-center justify-center gap-3">
+              {walletInfo && <Tick />}
+              <View className="flex flex-row items-end justify-center">
+                {walletInfo && <Text className="text-3xl text-foreground font-semibold2">Wallet Connected!</Text>}
+                {!walletInfo && <Text>Loading wallet...</Text>}
+              </View>
+              {!walletInfo && <Loading />}
               {balance && (
-                <Text className="self-start justify-self-start">
-                  {JSON.stringify(balance, null, 2)}
-                </Text>
+                <View className="flex flex-row items-end justify-center">
+                  <Text className="text-2xl text-foreground font-semibold2">{new Intl.NumberFormat().format(+balance.balance)}{" "}</Text>
+                  <Text className="text-xl text-muted-foreground font-semibold2">sats</Text>
+                </View>
               )}
             </View>
             <Button
+              size="lg"
               variant="destructive"
               onPress={() => {
-                useAppStore.getState().removeNostrWalletConnectUrl();
+                useAppStore.getState().removeCurrentWallet();
                 setScanning(true);
               }}
             >
-              <Text>Disconnect Wallet</Text>
+              <Text className="text-white text-2xl font-bold2">Disconnect Wallet</Text>
             </Button>
           </View>
         )

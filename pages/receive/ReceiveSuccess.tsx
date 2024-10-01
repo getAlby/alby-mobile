@@ -1,7 +1,7 @@
 import { Invoice } from "@getalby/lightning-tools";
 import { router, useLocalSearchParams } from "expo-router";
 import { View } from "react-native";
-import { Paid } from "~/animations/Paid";
+import { Tick } from "~/animations/Tick";
 import Screen from "~/components/Screen";
 import { Button } from "~/components/ui/button";
 import { Text } from "~/components/ui/text";
@@ -21,7 +21,7 @@ export function ReceiveSuccess() {
       />
       <View className="flex-1 justify-center items-center gap-2">
         <View className="-mt-32">
-          <Paid />
+          <Tick />
         </View>
         <Text className="text-3xl font-bold2 text-muted-foreground -mt-32">
           Received

@@ -1,7 +1,7 @@
 import { Link, router } from "expo-router";
 import { TouchableOpacity, View } from "react-native";
 import { FlatList } from "react-native";
-import { Settings2, Wallet2 } from "~/components/Icons";
+import { Settings2, TriangleAlert, Wallet2 } from "~/components/Icons";
 import { Button } from "~/components/ui/button";
 
 import { Text } from "~/components/ui/text";
@@ -35,8 +35,8 @@ export function Wallets() {
                       router.dismissAll();
                       router.navigate("/");
                       Toast.show({
-                        type: "success",
-                        text1: `Switched wallet to ${item.item.name || DEFAULT_WALLET_NAME}`,
+                        type: !!item.item.nostrWalletConnectUrl ? "success" : "info",
+                        text1: !!item.item.nostrWalletConnectUrl ? `Switched wallet to ${item.item.name || DEFAULT_WALLET_NAME}` : "Finish wallet setup to continue",
                         position: "top",
                       });
                     }
@@ -46,9 +46,9 @@ export function Wallets() {
                     active ? "border-primary" : "border-transparent",
                   )}
                 >
-                  <View className="flex flex-row gap-4 items-center">
+                  <View className="flex flex-row gap-4 items-center flex-shrink">
                     <Wallet2 className="text-foreground" />
-                    <Text className={cn("text-xl", active && "font-semibold2")}>
+                    <Text className={cn("text-xl pr-16", active && "font-semibold2")} numberOfLines={1} ellipsizeMode="tail">
                       {item.item.name || DEFAULT_WALLET_NAME}
                     </Text>
                   </View>
@@ -63,17 +63,23 @@ export function Wallets() {
                       </TouchableOpacity>
                     </Link>
                   )}
+                  {!item.item.nostrWalletConnectUrl && <TriangleAlert className="text-destructive absolute right-4" />}
                 </TouchableOpacity>
               );
             }}
           />
         </View>
         <View className="p-6">
-          <Link href="/settings/wallets/new" asChild>
-            <Button size="lg">
-              <Text>Connect a Wallet</Text>
-            </Button>
-          </Link>
+          <Button
+            size="lg"
+            onPress={() => {
+              useAppStore.getState().addWallet({ name: `Wallet ${wallets.length}` });
+              useAppStore.getState().setNWCClient(undefined);
+              router.dismissAll();
+            }}
+          >
+            <Text>Connect a Wallet</Text>
+          </Button>
         </View>
       </View>
     </>
