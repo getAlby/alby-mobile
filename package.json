@@ -26,6 +26,7 @@
     "buffer": "^6.0.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "crypto-js": "^4.2.0",
     "currency-list": "^1.0.8",
     "dayjs": "^1.11.10",
     "expo": "~51.0.34",
@@ -62,6 +63,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@types/crypto-js": "^4.2.2",
     "@types/react": "~18.2.45",
     "prettier": "^3.3.3",
     "tailwindcss": "^3.4.3",
